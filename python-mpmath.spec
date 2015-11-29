@@ -10,6 +10,7 @@ Release:	5
 License:	BSD
 Group:		Libraries/Python
 URL:		http://code.google.com/p/mpmath/
+BuildRequires:	rpmbuild(macros) >= 1.710
 Source0:	http://mpmath.googlecode.com/files/mpmath-%{version}.tar.gz
 # Source0-md5:	e2e7a7932969f52f25b7e19d8f0438bd
 Source1:	http://mpmath.googlecode.com/files/mpmath-docsrc-%{version}.tar.gz
