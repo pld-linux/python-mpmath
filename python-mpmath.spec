@@ -5,16 +5,15 @@
 
 Summary:	A pure Python library for multiprecision floating-point arithmetic
 Name:		python-mpmath
-Version:	0.18
-Release:	6
+Version:	0.19
+Release:	1
 License:	BSD
 Group:		Libraries/Python
-URL:		http://code.google.com/p/mpmath/
-BuildRequires:	rpmbuild(macros) >= 1.710
-Source0:	http://mpmath.googlecode.com/files/mpmath-%{version}.tar.gz
-# Source0-md5:	e2e7a7932969f52f25b7e19d8f0438bd
-Source1:	http://mpmath.googlecode.com/files/mpmath-docsrc-%{version}.tar.gz
-# Source1-md5:	65286d76dff4f02f41b31f1c3d1810dd
+Source0:	http://mpmath.org/files/mpmath-%{version}.tar.gz
+# Source0-md5:	af5cc956b2673b33a25c3e57299bae7b
+Source1:	http://mpmath.org/files/mpmath-docsrc-%{version}.tar.gz
+# Source1-md5:	ab3ea6f464662738e7f53f196806639a
+URL:		http://mpmath.org/
 %if %{with python2}
 BuildRequires:	python-devel
 BuildRequires:	python-Sphinx
@@ -23,6 +22,7 @@ BuildRequires:	python-Sphinx
 BuildRequires:	python3-devel
 BuildRequires:	python-Sphinx
 %endif
+BuildRequires:	rpmbuild(macros) >= 1.710
 BuildRequires:	texlive-latex
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
