@@ -6,7 +6,7 @@
 Summary:	A pure Python library for multiprecision floating-point arithmetic
 Name:		python-mpmath
 Version:	0.19
-Release:	1
+Release:	2
 License:	BSD
 Group:		Libraries/Python
 Source0:	http://mpmath.org/files/mpmath-%{version}.tar.gz
