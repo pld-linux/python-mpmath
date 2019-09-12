@@ -9,7 +9,7 @@ Summary:	A pure Python library for multiprecision floating-point arithmetic
 Summary(pl.UTF-8):	Czysto pythonowa biblioteka do arytmetyki zmiennoprzecinkowej wielokrotnej precyzji
 Name:		python-mpmath
 Version:	1.1.0
-Release:	1
+Release:	2
 License:	BSD
 Group:		Libraries/Python
 # pypi release is missing docs
@@ -158,10 +158,13 @@ rm -rf $RPM_BUILD_ROOT
 %py_install
 
 %py_postclean
+%{__rm} -r $RPM_BUILD_ROOT%{py_sitescriptdir}/mpmath/tests
 %endif
 
 %if %{with python3}
 %py3_install
+
+%{__rm} -r $RPM_BUILD_ROOT%{py3_sitescriptdir}/mpmath/tests
 %endif
 
 %clean
