@@ -22,7 +22,7 @@ URL:		http://mpmath.org/
 %if %{with python2}
 BuildRequires:	python-devel >= 1:2.7
 # for > 1.1.0
-#BuildRequires:	python-setuptools >= 36.7.0
+#BuildRequires:	python-setuptools >= 1:36.7.0
 #BuildRequires:	python-setuptools_scm >= 1.7.0
 %if %{with tests}
 BuildRequires:	python-pytest
@@ -31,7 +31,7 @@ BuildRequires:	python-pytest
 %if %{with python3}
 BuildRequires:	python3-devel >= 1:3.4
 # for > 1.1.0
-#BuildRequires:	python3-setuptools >= 36.7.0
+#BuildRequires:	python3-setuptools >= 1:36.7.0
 #BuildRequires:	python3-setuptools_scm >= 1.7.0
 %if %{with tests}
 BuildRequires:	python3-pytest
