@@ -8,33 +8,32 @@
 Summary:	A pure Python library for multiprecision floating-point arithmetic
 Summary(pl.UTF-8):	Czysto pythonowa biblioteka do arytmetyki zmiennoprzecinkowej wielokrotnej precyzji
 Name:		python-mpmath
-Version:	1.1.0
-Release:	7
+Version:	1.2.1
+Release:	1
 License:	BSD
 Group:		Libraries/Python
 # pypi release is missing docs
-#Source0:	https://files.pythonhosted.org/packages/source/m/mpmath/mpmath-%{version}.tar.gz
+Source0:	https://files.pythonhosted.org/packages/source/m/mpmath/mpmath-%{version}.tar.gz
+# Source0-md5:	ef8a6449851755319673b06f71731d52
 # ... so use github
 #Source0Download: https://github.com/fredrik-johansson/mpmath/releases
-Source0:	https://github.com/fredrik-johansson/mpmath/archive/%{version}/mpmath-%{version}.tar.gz
-# Source0-md5:	c06bdf456bbbf092c929931974c8dac9
+#Source0:	https://github.com/fredrik-johansson/mpmath/archive/%{version}/mpmath-%{version}.tar.gz
+## Source0-md5:	c06bdf456bbbf092c929931974c8dac9
 URL:		http://mpmath.org/
 %if %{with python2}
 BuildRequires:	python-devel >= 1:2.7
-# for > 1.1.0
-#BuildRequires:	python-setuptools >= 1:36.7.0
-#BuildRequires:	python-setuptools_scm >= 1.7.0
+BuildRequires:	python-setuptools >= 1:36.7.0
+BuildRequires:	python-setuptools_scm >= 1.7.0
 %if %{with tests}
-BuildRequires:	python-pytest
+BuildRequires:	python-pytest >= 4.6
 %endif
 %endif
 %if %{with python3}
 BuildRequires:	python3-devel >= 1:3.4
-# for > 1.1.0
-#BuildRequires:	python3-setuptools >= 1:36.7.0
-#BuildRequires:	python3-setuptools_scm >= 1.7.0
+BuildRequires:	python3-setuptools >= 1:36.7.0
+BuildRequires:	python3-setuptools_scm >= 1.7.0
 %if %{with tests}
-BuildRequires:	python3-pytest
+BuildRequires:	python3-pytest >= 4.6
 %endif
 %endif
 BuildRequires:	rpmbuild(macros) >= 1.714
@@ -133,6 +132,9 @@ done
 %py_build
 
 %if %{with tests}
+# test_axes uses DISPLAY
+#%{__python} -m pytest -k 'not test_axes' mpmath/tests
+PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
 %{__python} -m pytest -k 'not test_axes' mpmath/tests
 %endif
 %endif
@@ -141,6 +143,8 @@ done
 %py3_build
 
 %if %{with tests}
+#%{__python3} -m pytest -k 'not test_axes' mpmath/tests
+PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
 %{__python3} -m pytest -k 'not test_axes' mpmath/tests
 %endif
 %endif
@@ -181,7 +185,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python3}
 %files -n python3-mpmath
 %defattr(644,root,root,755)
-%doc CHANGES LICENSE
+%doc CHANGES LICENSE README.rst TODO
 %{py3_sitescriptdir}/mpmath
 %{py3_sitescriptdir}/mpmath-%{version}-*.egg-info
 %endif
